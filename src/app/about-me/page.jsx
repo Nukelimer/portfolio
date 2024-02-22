@@ -16,9 +16,8 @@ const skills = [
 const AboutMePage = () => {
   const ref = useRef();
   const skillElement = useRef();
-  const skillList = useRef();
+
   const skilledRefView = useInView(skillElement);
-  const skilledListView = useInView(skillList);
   const { scrollYProgress } = useScroll({ container: ref });
 
   return (
