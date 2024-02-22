@@ -10,10 +10,10 @@ const ContactMePage = () => {
   const [emailError, setEmailError] = useState(false);
 
   const sendEmail = (event) => {
+    
+    event.preventDefault();
     setEmailSuccess(false);
     setEmailError(false);
-
-    event.preventDefault();
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_SERVICE_ID,
@@ -22,11 +22,11 @@ const ContactMePage = () => {
         process.env.NEXT_PUBLIC_PUBLIC_KEY
       )
       .then(
-        (result) => {
-          form.current.reset();
+        () => {
           setEmailSuccess(true);
+          form.current.reset();
         },
-        (error) => {
+        () => {
           setEmailError(true);
         }
       );
