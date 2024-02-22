@@ -29,7 +29,7 @@ const AboutMePage = () => {
       <div className="h-full overflow-scroll lg:flex" ref={ref}>
         {/* container */}
         <div className=" px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 lg:w-2/3 xl:w-1/2 ">
-          // {/* text */}
+          {/* text */}
           <div className="text-justify">
             <h1 className="font-bold text-2xl">About Me </h1>
             <p>
