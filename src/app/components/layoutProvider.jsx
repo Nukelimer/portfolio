@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import Navbar from "./navbar";
 import {
   AnimatePresence,
-  easeIn,
   easeInOut,
   easeOut,
   motion,

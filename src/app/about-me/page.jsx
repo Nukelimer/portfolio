@@ -49,7 +49,6 @@ const AboutMePage = () => {
             </p>
             <hr className="h-[1px] bg-black mb-6 mt-2" />
             <span className="italic font-semibold">
-              {" "}
               "Talk is cheap, show me the code" - Linus Torvalds
             </span>
           </div>
