@@ -10,7 +10,6 @@ const ContactMePage = () => {
   const [emailError, setEmailError] = useState(false);
 
   const sendEmail = (event) => {
-    
     event.preventDefault();
     setEmailSuccess(false);
     setEmailError(false);
@@ -18,8 +17,10 @@ const ContactMePage = () => {
       .sendForm(
         process.env.NEXT_PUBLIC_SERVICE_ID,
         process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        form.current,
-        process.env.NEXT_PUBLIC_PUBLIC_KEY
+        form.current, {
+          
+          publicKey:process.env.NEXT_PUBLIC_PUBLIC_KEY
+        }
       )
       .then(
         () => {
@@ -31,6 +32,8 @@ const ContactMePage = () => {
         }
       );
   };
+
+
 
   const message = "Shoot me a mail.";
 
@@ -98,10 +101,22 @@ const ContactMePage = () => {
               Send
             </button>
           </div>
-          {emailSuccess && <p className="px-2 text-green-600"> Hey, your email was sent successfully, i will respond as soon as possible 🤓.</p> }
-          {emailError && <p className="px-2 text-red-400"> Hey, your message did not go through, please try again 🙁.</p> }
-         
+          {emailSuccess && (
+            <p className="px-2 text-green-600">
+              {" "}
+              Hey, your email was sent successfully, i will respond as soon as
+              possible 🤓.
+            </p>
+          )}
+          {emailError && (
+            <p className="px-2 text-red-400">
+              {" "}
+              Hey, your message did not go through, please try again 🙁.
+            </p>
+          )}
         </form>
+
+        
       </div>
     </motion.div>
   );
