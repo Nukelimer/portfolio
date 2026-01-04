@@ -136,3 +136,11 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "mono";
+  src: url("/fonts/mono.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

@@ -18,7 +18,7 @@
 			.replace(/\b\w/g, (c) => c.toUpperCase());
 	});
 
-	const displayTitle = $derived(isHidden ? '😢I MISS YOU' : routeTitle);
+	const displayTitle = $derived(isHidden ? 'I MISS YOU, PLEASE, HIRE ME' : routeTitle);
 
 	$effect(() => {
 		let timeoutId: number;
@@ -47,7 +47,13 @@
 	{#if pageState === 404}
 		<link rel="icon" href="/404.png" />
 	{:else}
-		<link rel="icon" href="/portfolio.png" />
+
+	{#if isHidden}
+			<link rel="icon" href="/sad-face.png" />
+		{:else}
+		
+			<link rel="icon" href="/portfolio.png" />
+		{/if}
 	{/if}
 
 	<title>{displayTitle}</title>

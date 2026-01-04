@@ -1,4 +1,4 @@
-<div class=" mx-3 overflow-clip opacity-70 max-w-md">
+<div class=" mx-3 overflow-clip text-black/70 max-w-md">
 	<h4 class="text-xl font-medium hover:scale-105 transition-all duration-300 delay-150 hover:font-normal w-full">Currently cooking ☺︎</h4>
 
 	<div class="">

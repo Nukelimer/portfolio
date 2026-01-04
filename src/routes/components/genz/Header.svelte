@@ -5,8 +5,8 @@
 
 <div class="relative flex flex-col items-center justify-center gap-4">
 	<Media />
-	<div class=" -translate-y-24 absolute z-10 ml-2 flex -rotate-28 flex-col items-center px-6 opacity-70">
-		<h2 class="name_font mb-14 -translate-y-4 text-6xl opacity-70">Remi Egwuda</h2>
+	<div class=" -translate-y-24 absolute z-10 ml-2 flex -rotate-28 flex-col items-center px-6 text-black/70">
+		<h2 class="name_font mb-14 -translate-y-4 text-6xl text-black/50">Remi Egwuda</h2>
 
 		<h3 class="-translate-y-9 capitalize opacity-100">Full-stack development</h3>
 		<span class="mb-8 -translate-y-9 capitalize text-sm italic">noun & verb</span>
