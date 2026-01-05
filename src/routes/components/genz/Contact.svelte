@@ -9,3 +9,5 @@
 </div>
 
 </div>
+
+<!-- ADD LINUX MINT IMAGE -->

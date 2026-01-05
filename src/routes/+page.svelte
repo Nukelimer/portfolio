@@ -7,7 +7,7 @@
         choice = val;
     }
 
-    $inspect(choice)
+    // $inspect(choice)
 
     
 </script>
