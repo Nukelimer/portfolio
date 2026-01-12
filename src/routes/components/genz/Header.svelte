@@ -6,7 +6,10 @@
 	import { cn } from '$lib/utils';
 	import Text from './Text.svelte';
 
-	let mode = $state('chaos');
+	let mode = $state('cleaned-up');
+
+
+	
 let audioUnlocked = $state(false);
 	$effect(() => {
 	const unlock = () => {
@@ -54,7 +57,7 @@ let audioUnlocked = $state(false);
 	<!-- {mode} -->
 	
 	
-	<LGMedia {mode} />
+	<LGMedia bind:mode={mode} />
 	<div
 		class=" absolute z-40 md:hidden ml-2 flex -rotate-28
 		 flex-col items-center justify-center font-medium text-black/70 [@media(min-width:365px)]:translate-y-14 [@media(min-width:389px)]:-translate-y-10"
@@ -74,7 +77,9 @@ let audioUnlocked = $state(false);
 		</p>
 	</div>
 
-	<Text/>
+
+	{mode}
+	<Text {mode}/>
 
 	
 

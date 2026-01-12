@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
+	import { cn } from '$lib/utils';
 
-	let { isplaying = false } = $props();
+	let { isplaying = false, mode } = $props();
 
 	let audio: HTMLAudioElement;
 	let bars: HTMLSpanElement[] = [];
@@ -66,7 +67,7 @@
 	});
 </script>
 
-<div class="w-full rounded-xl bg-white/5 p-4 shadow-sm backdrop-blur-md">
+<div class= {cn(mode == "cleaned-up"? "w-1/3 rounded-r-xl justify-evenly flex flex-col bg-white/5 p-4 shadow-sm backdrop-blur-md": "w-full rounded-xl bg-white/5 p-4 shadow-sm backdrop-blur-md")}>
 	<div class="mb-2 h-6">
 		<div class="flex justify-center gap-1">
 			{#each Array(5) as _, i}
