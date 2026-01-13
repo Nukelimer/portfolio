@@ -5,24 +5,24 @@
 
 	const mediaSrc = [
 		'/genz/cursor.webp',
-		// '/genz/dream_note.webp',
+		'/genz/dream_note.webp',
 		// '/genz/garri.png',
-		// '/genz/intellij-idea.png',
+		'/genz/intellij-idea.png',
 		'/genz/notebook.webp',
 		'/genz/pen.png',
 		'/genz/music.webp',
-		// '/genz/pixel.png',
-		'/genz/window.webp'
-		// '/genz/folder.webp',
-		// '/genz/pin_note.webp',
-		// '/genz/solar_panel.png',
-		// '/genz/thinkpad.png'
+		'/genz/pixel.png',
+		'/genz/window.webp',
+		'/genz/folder.webp',
+		'/genz/java.png',
+		'/genz/vscode.png',
+		'/genz/pin_note.webp',
+		'/genz/solar_panel.png',
+		'/genz/thinkpad.png'
 	];
 
 	let { mode = $bindable() } = $props();
 	let isplaying = $state(false);
-
-		
 </script>
 
 <div class="relative mb-8 flex h-screen w-screen justify-center overflow-hidden">
@@ -43,7 +43,7 @@
 						'[@media(min-width:439px)]: [@media(min-width:450px)]: absolute top-5 right-6 w-38 rounded-2xl border border-black/20 bg-[#F6E8D6]/10 shadow-2xl shadow-[#F6E8D6] transition-all duration-500 hover:scale-105 hover:transition-all hover:delay-300 hover:duration-300  [@media(min-width:439px)]:w-44 [@media(min-width:450px)]:w-64',
 					src == '/genz/music.webp' &&
 						mode == 'cleaned-up' &&
-						'  absolute top-5 right-[cal()]  flex h-56 rounded-2xl border border-black/20 bg-[#F6E8D6]/10 shadow-2xl shadow-[#F6E8D6] transition-all duration-700  hover:scale-105 hover:rotate-3 hover:animate-pulse hover:transition-all hover:delay-300 hover:duration-300 [@media(min-width:450px)]:w-96'
+						'  absolute top-12 right-[cal()]  flex h-56 rounded-2xl border border-black/20 bg-[#F6E8D6]/10 shadow-2xl shadow-[#F6E8D6] transition-all duration-700  hover:scale-105 hover:rotate-3 hover:animate-pulse hover:transition-all hover:delay-300 hover:duration-300 [@media(min-width:450px)]:w-96'
 				)}
 			>
 				<div
@@ -87,32 +87,53 @@
 						src == '/genz/cursor.webp' &&
 						'absolute  top-32 right-[calc(5%-10px)] z-10 h-16 w-16 -rotate-12 transition-all delay-500 duration-300 hover:z-20 hover:scale-75 hover:-rotate-32',
 
-					src == '/genz/dream_note.webp' && mode == 'chaos'
-						? '[@media(min-width:450px)]:w-58-rotate-56 absolute top-33 -left-8 z-30  h-24 w-38 transition-all delay-200 duration-300 hover:scale-90 hover:-rotate-48  sm:left-24   [@media(min-width:640px)]:h-32 [@media(min-width:640px)]:w-48 '
-						: '',
+					src == '/genz/dream_note.webp' &&
+						mode == 'chaos' &&
+						src == '/genz/dream_note.webp' &&
+						'[@media(min-width:450px)]:w-58-rotate-56 absolute top-33 -left-8 z-30  h-24 w-38 transition-all delay-200 duration-300 hover:scale-90 hover:-rotate-48  sm:left-24   [@media(min-width:640px)]:h-32 [@media(min-width:640px)]:w-48 ',
+
+						mode == 'cleaned-up' &&
+						src == '/genz/dream_note.webp' &&
+						'[@media(min-width:450px)]:w-58-rotate-56 absolute top-33 -left-8 z-30  h-24 w-38 transition-all delay-200 duration-300 hover:scale-90 hover:-rotate-48  sm:left-24   [@media(min-width:640px)]:h-32 [@media(min-width:640px)]:w-48 ',
+
+
+
+
+
+
+
 
 					src == '/genz/garri.png' && mode == 'chaos'
 						? 'absolute bottom-26  z-30 h-38 w-37.5  object-cover transition-all duration-300 hover:scale-110 hover:-rotate-6  [@media(min-width:399px)]:bottom-36 [@media(min-width:399px)]:h-48  [@media(min-width:399px)]:w-47.5  [@media(min-width:439px)]:bottom-36 [@media(min-width:450px)]:-bottom-48 [@media(min-width:640px)]:bottom-2/5 [@media(min-width:640px)]:left-25  '
 						: '',
 
-					src == '/genz/intellij-idea.png' && mode == 'chaos'
-						? 'absolute top-3 left-12  h-22 w-22 translate-x-6 rotate-12 transition-all duration-300 hover:z-20 hover:scale-110 sm:translate-x-0     sm:scale-110 sm:hover:scale-125  [@media(min-width:399px)]:left-20 [@media(min-width:450px)]:h-30 [@media(min-width:450px)]:w-30'
-						: mode == 'cleaned-up'
-							? ''
-							: '',
+					src == '/genz/intellij-idea.png' &&
+						mode == 'chaos' &&
+						src == '/genz/intellij-idea.png' &&
+						'absolute top-36   z-30 h-22  w-22 rotate-12 transition-all duration-300 hover:scale-110   sm:scale-110 sm:hover:scale-125  [@media(min-width:399px)]:left-1 [@media(min-width:450px)]:h-30 [@media(min-width:450px)]:w-30',
+
+					mode == 'cleaned-up' &&
+						src == '/genz/intellij-idea.png' &&
+						'absolute top-3   h-22 w-22 translate-x-6 rotate-12 transition-all duration-300 hover:z-20 hover:scale-110 sm:translate-x-0     sm:scale-110 sm:hover:scale-125  [@media(min-width:399px)]:left-2 [@media(min-width:450px)]:h-30 [@media(min-width:450px)]:w-30',
+
+					src == '/genz/vscode.png' &&
+						mode == 'chaos' &&
+						src == '/genz/vscode.png' &&
+						'absolute top-0 left-0   z-30 h-30 w-30 rotate-12 transition-all   duration-300 hover:scale-110  sm:scale-110 sm:hover:scale-125',
+
+					mode == 'cleaned-up' &&
+						src == '/genz/vscode.png' &&
+						'absolute top-3  left-2  h-30 w-30 translate-x-6 transition-all duration-300    hover:z-20 hover:scale-110  sm:translate-x-46 sm:scale-110 sm:hover:scale-125',
 
 					src == '/genz/notebook.webp' &&
 						mode == 'chaos' &&
 						src == '/genz/notebook.webp' &&
 						'absolute top-64 -left-80   z-20 h-96.5 w-200 min-w-135 -rotate-28  object-cover  transition-all  delay-300 duration-300 hover:scale-110 hover:-rotate-22 sm:top-72  sm:max-w-152   [@media(min-width:359px)]:-translate-y-14  [@media(min-width:368px)]:translate-y-4 [@media(min-width:450px)]:top-76 [@media(min-width:450px)]:translate-y-12',
 
-						mode =='cleaned-up' &&
+					mode == 'cleaned-up' &&
 						src == '/genz/notebook.webp' &&
-						'absolute top-64 -left-70   z-20 h-96.5 w-200 min-w-135 rotate-0  object-cover  transition-all  delay-300 duration-300 hover:scale-110 hover:-rotate-22 sm:top-72  sm:max-w-152   [@media(min-width:359px)]:-translate-y-14  [@media(min-width:368px)]:translate-y-4 [@media(min-width:450px)]:top-76 [@media(min-width:450px)]:translate-y-12',
+						'absolute top-64 -left-70   z-20 h-96.5 w-200 min-w-135 rotate-0  object-cover  transition-all  delay-300 duration-300 hover:scale-110 hover:-rotate-6 sm:top-72  sm:max-w-152   [@media(min-width:359px)]:-translate-y-14  [@media(min-width:368px)]:translate-y-4 [@media(min-width:450px)]:top-76 [@media(min-width:450px)]:translate-y-12',
 
-
-
-						
 					src == '/genz/pen.png' &&
 						mode == 'chaos' &&
 						src == '/genz/pen.png' &&
@@ -120,33 +141,53 @@
 
 					mode == 'cleaned-up' &&
 						src == '/genz/pen.png' &&
-						'[@media(min-width:368px)]: absolute top-14 left-[calc(100%-300px)] h-54  -translate-x-full transition-all duration-500 hover:scale-110 hover:rotate-16 hover:transition-all hover:delay-200 hover:duration-500 [@media(min-width:365px)]:rotate-0',
+						'[@media(min-width:368px)]: absolute top-14 left-[calc(100%-260px)] h-54  -translate-x-full transition-all duration-500 hover:scale-110 hover:rotate-16 hover:transition-all hover:delay-200 hover:duration-500 [@media(min-width:365px)]:rotate-0',
 
-					src == '/genz/pixel.png' && mode == 'chaos'
-						? '[@media(min-width:399px)]:bottom--0 absolute right-12 bottom-3  z-30 h-30 origin-center  rotate-220 cursor-pointer transition-all delay-200 duration-300 hover:z-30  hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1 [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18  [@media(min-width:449px)]:right-38  [@media(min-width:449px)]:bottom-14  [@media(min-width:640px)]:bottom-1/3 [@media(min-width:640px)]:translate-y-1 [@media(min-width:640px)]:rotate-16  [@media(min-width:640px)]:hover:z-30   [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-14 [@media(min-width:700px)]:left-6              '
-						: '',
+					src == '/genz/pixel.png' &&
+						mode == 'chaos' &&
+						src == '/genz/pixel.png' &&
+						'[@media(min-width:399px)]:bottom--0 absolute right-12 bottom-3  z-30 h-30 origin-center  rotate-220 cursor-pointer transition-all delay-200 duration-300 hover:z-30  hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1 [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18  [@media(min-width:449px)]:right-38  [@media(min-width:449px)]:bottom-14  [@media(min-width:640px)]:bottom-1/3 [@media(min-width:640px)]:translate-y-1 [@media(min-width:640px)]:rotate-16  [@media(min-width:640px)]:hover:z-30   [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-14 [@media(min-width:700px)]:left-6 ',
 
+					mode == 'cleaned-up' &&
+						src == '/genz/pixel.png' &&
+						'[@media(min-width:399px)]:bottom--0 absolute right-12 bottom-3  z-30 hidden h-30  origin-center rotate-220 cursor-pointer transition-all delay-200 duration-300  hover:z-30 hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1  [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18  [@media(min-width:449px)]:right-38  [@media(min-width:449px)]:bottom-14 [@media(min-width:640px)]:bottom-1/3 [@media(min-width:640px)]:translate-y-1  [@media(min-width:640px)]:rotate-16   [@media(min-width:640px)]:hover:z-30 [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-14 [@media(min-width:700px)]:left-6 ',
 					src == '/genz/pin_note.webp' &&
 						'absolute -left-48 z-1 h-96 hover:scale-110 hover:rotate-12 hover:transition-all hover:delay-500 hover:duration-300  ',
 
-					src == '/genz/solar_panel.png' && mode == 'chaos'
-						? 'absolute   right-12 h-64 w-40  translate-y-12   hover:scale-105 hover:rotate-80  hover:transition-all hover:delay-500 hover:duration-500 [@media(min-width:365px)]:-rotate-6  [@media(min-width:399px)]:h-74  [@media(min-width:399px)]:w-54 [@media(min-width:450px)]:bottom-[44%] [@media(min-width:605px)]:rotate-90'
-						: '',
-
+					src == '/genz/solar_panel.png' &&
+						mode == 'chaos' &&
+						src == '/genz/solar_panel.png' &&
+						'absolute   right-12 h-64 w-40  translate-y-12   hover:scale-105 hover:rotate-80  hover:transition-all hover:delay-500 hover:duration-500 [@media(min-width:365px)]:-rotate-6  [@media(min-width:399px)]:h-74  [@media(min-width:399px)]:w-54 [@media(min-width:450px)]:bottom-[44%] [@media(min-width:605px)]:rotate-90',
+					mode == 'cleaned-up' &&
+						src == '/genz/solar_panel.png' &&
+						'absolute   right-[calc(calc(100%-590px))] hidden h-64  w-40  translate-y-12 hover:scale-105  hover:rotate-80 hover:transition-all hover:delay-500 hover:duration-500  2xl:flex  [@media(min-width:365px)]:-rotate-6 [@media(min-width:399px)]:h-64 [@media(min-width:399px)]:w-70 [@media(min-width:450px)]:bottom-[76%]  [@media(min-width:605px)]:rotate-90',
 					src == '/genz/thinkpad.png' &&
-						'absolute top-26 right-46  h-38  w-36 object-cover hover:origin-center hover:scale-95 hover:transition-all hover:delay-300 hover:duration-300  [@media(min-width:439px)]:right-50  [@media(min-width:450px)]:h-64 [@media(min-width:450px)]:w-58  [@media(min-width:450px)]:object-cover  [@media(min-width:600px)]:top-8 [@media(min-width:600px)]:right-54 [@media(min-width:640px)]:right-58  [@media(min-width:640px)]:w-54 [@media(min-width:720px)]:right-84 ',
+						'absolute  right-46  hidden  w-36  hover:origin-center hover:scale-95 hover:transition-all hover:delay-300  hover:duration-300  2xl:flex [@media(min-width:439px)]:right-50  [@media(min-width:450px)]:h-54  [@media(min-width:450px)]:w-58 [@media(min-width:450px)]:object-fill [@media(min-width:600px)]:top-12  [@media(min-width:600px)]:right-54 [@media(min-width:640px)]:right-58 [@media(min-width:640px)]:w-44 [@media(min-width:720px)]:right-84  ',
 
 					src == '/genz/window.webp' &&
 						mode == 'chaos' &&
 						src == '/genz/window.webp' &&
-						'absolute right-21 hidden h-38 w-18 rotate-90 object-fill  sm:h-54 [@media(min-width:450px)]:bottom-86 [@media(min-width:450px)]:flex ',
+						'absolute right-21 hidden h-38 w-18 rotate-90 object-fill  hover:scale-110 hover:transition-all hover:duration-300 sm:h-54 [@media(min-width:450px)]:bottom-86 [@media(min-width:450px)]:flex ',
 					mode == 'cleaned-up' &&
 						src == '/genz/window.webp' &&
-						'delay- absolute right-41 hidden h-38  w-18 rotate-x-0   object-fill  transform-3d hover:scale-110 sm:h-54 [@media(min-width:450px)]:top-14 [@media(min-width:450px)]:flex',
+						'delay- absolute right-36 hidden h-38  w-18 rotate-x-0   object-fill  transform-3d hover:scale-110 sm:h-54 [@media(min-width:450px)]:top-14 [@media(min-width:450px)]:flex',
 
-					src == '/genz/folder.webp' && mode == 'chaos'
-						? 'absolute right-4 bottom-24 z-20 hidden h-28 w-28 hover:scale-105  hover:-rotate-12 hover:transition-all hover:delay-300 hover:duration-300 sm:right-28 sm:bottom-68  [@media(min-width:450px)]:bottom-[56%] [@media(min-width:450px)]:flex [@media(min-width:640px)]:left-6 '
-						: ''
+					src == '/genz/folder.webp' &&
+						mode == 'chaos' &&
+						src == '/genz/folder.webp' &&
+						'absolute right-4  z-20 h-26 w-26  transition-all delay-500 duration-300 hover:scale-105 hover:-rotate-12 hover:transition-all  hover:delay-300 hover:duration-300 sm:bottom-73  [@media(min-width:450px)]:flex ',
+
+					mode == 'cleaned-up' &&
+						src == '/genz/folder.webp' &&
+						'absolute  top-38 z-20 h-32 w-32  transition-all delay-500 duration-300 hover:scale-105 hover:-rotate-12   hover:transition-all  hover:delay-300  hover:duration-300 sm:left-1 [@media(min-width:450px)]:flex  ',
+					src == '/genz/java.png' &&
+						mode == 'chaos' &&
+						src == '/genz/java.png' &&
+						'absolute right-46  z-20  h-20 w-26  rounded-md border-2 bg-amber-50 shadow-accent transition-all delay-500  duration-300 hover:scale-105 hover:-rotate-12  hover:transition-all hover:delay-300 hover:duration-300 sm:bottom-76 [@media(min-width:450px)]:flex',
+
+					mode == 'cleaned-up' &&
+						src == '/genz/java.png' &&
+						'absolute  top-42 z-20  h-26 w-32  rounded-md border-2 bg-amber-50 transition-all delay-500   duration-300  hover:scale-105  hover:-rotate-12 hover:transition-all hover:delay-300  hover:duration-300 sm:left-44 [@media(min-width:450px)]:flex'
 				)}
 			/>
 		{/if}
@@ -192,7 +233,6 @@
 				class="max-h-9.5 object-contain hover:scale-110 hover:transition-all hover:delay-300 hover:duration-300"
 				onclick={() => {
 					mode = 'cleaned-up';
-					
 				}}
 				role="presentation"
 			/>

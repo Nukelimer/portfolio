@@ -11,10 +11,10 @@ let { mode } = $props();
 		mode == 'chaos' &&
 			'absolute z-40 ml-2 flex flex-col items-center justify-center font-medium text-black/70 [@media(min-width:365px)]:translate-y-14 [@media(min-width:389px)]:-translate-y-10 transition-all duration-500  right-1/3 xl:right-[calc(36vw-10px)]',
 
-		mode == 'cleaned-up' && 'absolute z-40 ml-2 flex flex-col items-center justify-center font-medium text-black/70 [@media(min-width:365px)]:translate-y-14 [@media(min-width:389px)]:-translate-y-10 right-12 transition-all duration-500 text-end border-4 border-red-200'
+		mode == 'cleaned-up' && 'absolute z-40 ml-2 flex flex-col items-center justify-center font-medium text-black/70 [@media(min-width:365px)]:translate-y-14 [@media(min-width:389px)]:-translate-y-10 right-12 transition-all duration-500 text-end '
 	)}
 >
-	{mode}
+
 	<h2 class="name_font mb-10 text-8xl text-black/70 duration-300 hover:scale-110">Remi Egwuda</h2>
 
 	<h3 class="-translate-y-9 text-lg capitalize opacity-100 duration-300 hover:scale-110">
