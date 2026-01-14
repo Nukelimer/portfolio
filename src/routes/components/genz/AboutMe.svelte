@@ -79,16 +79,16 @@
 	</defs>
 </svg>
 
-<div class="mono mx-3 w-full max-w-md overflow-clip px-4 text-black/70">
+<div class="mono mx-3 w-full max-w-md md:min-w-4xl  overflow-clip px-4 text-black/70">
 	<h4
 		class="font-me.dium mt-16 mb-8 w-full origin-top-right text-2xl font-bold transition-all delay-150 duration-300 hover:ml-6 hover:scale-105 hover:font-normal"
 	>
 		About ⌘
 	</h4>
 
-	<div class="mono max-w-sm text-left text-lg font-light text-black/50">
+	<div class="mono max-w-sm  mb-22  min-w-full  text-left text-lg font-light text-black/50">
 		<div class="flex">
-			<p class="font-mono text-lg leading-relaxed text-[#69645e] select-none">
+			<p class="font-mono text-lg leading-relaxed text-[#69645e] select-none md:max-w-4xl md:w-full  ">
 				{#each characters as { char, id }}
 					<span
 						class="-block inline transition-all duration-200"
@@ -138,7 +138,7 @@
 			</p>
 		</div>
 
-		<Contact/>
+	
 	</div>
 </div>
 

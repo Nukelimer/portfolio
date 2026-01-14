@@ -21,7 +21,7 @@ let audioUnlocked = $state(false);
 </script>
 
 <div
-	class="max-w-x relative flex flex-col items-center justify-center gap-4 overflow-hidden sm:bg-red-300 md:hidden md:bg-pink-400"
+	class="max-w-x relative flex flex-col items-center justify-center gap-4 overflow-hidden  md:hidden "
 >
 	<!-- <div class="fixed top-24 z-50 bg-white">width: {width}</div> -->
 
@@ -77,11 +77,15 @@ let audioUnlocked = $state(false);
 		</p>
 	</div>
 
-
-	{mode}
+	
 	<Text {mode}/>
 
 	
 
 </div>
+<style>
+	.name_font {
+		font-family: 'Remi', sans-serif;
+	}
+</style>
 

@@ -3,7 +3,7 @@
 </script>
 
 {#each data as item}
-	<div class="mx-12 flex gap-4 rounded-xl border border-black/10 bg-accent/30 p-6 py-6 hover:scale-110 active:scale-110 transition-transform duration-200 ease-in-out delay-200 my-8">
+	<div class="flex gap-4 rounded-xl border border-black/10 bg-accent/30 p-6 py-6 hover:scale-110 active:scale-110 transition-transform duration-200 ease-in-out delay-200 my-2   md:min-w-sm md:max-w-sm">
 		<div class="">
 			<img src={item.image} alt={item.name} class="size-18 object-cover" />
 		</div>

@@ -13,12 +13,12 @@
 
 <Header/>
 
+<AboutMe/>
 <HeaderText/>
 <RecentlyMade/>
 
 <OtherWorks/>
 
-<AboutMe/>
-
+	<Contact/>
 
 </div>

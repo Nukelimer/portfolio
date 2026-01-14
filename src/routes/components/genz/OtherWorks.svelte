@@ -26,9 +26,9 @@
 	];
 </script>
 
-<div class=" mx-3 max-w-md  w-full overflow-clip text-black/70">
+<div class=" mx-3 max-w-md md:max-w-3xl  w-full overflow-clip text-black/70">
 	<h4
-		class="mt-16 mb-8 w-full text-xl font-medium transition-all delay-150 duration-300 hover:scale-105 hover:font-normal"
+		class="mt-16 mb-8 w-full text-xl font-medium transition-all delay-150 duration-300 hover:scale-105 hover:font-normal md:text-2xl "
 	>
 		Currently cooking ☺︎
 	</h4>
