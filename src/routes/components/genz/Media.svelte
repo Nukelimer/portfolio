@@ -156,6 +156,7 @@
 					e.preventDefault(); // Prevents "long press" menus on mobile
 					playSound(src);
 				}}
+				onclick={() => playSound(src)}
 				onmouseup={stopSound}
 				ontouchend={stopSound}
 				alt="Media"
