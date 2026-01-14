@@ -21,10 +21,53 @@
 		'/genz/thinkpad.png'
 	];
 
+	const audioFiles: Record<string, string> = {
+		'/genz/cursor.webp': '/audio/click.mp3',
+		'/genz/dream_note.webp': '/audio/paper-crinkle.mp3',
+		'/genz/intellij-idea.png': '/audio/keyboard-typing.mp3',
+		'/genz/notebook.webp': '/audio/page-flip.wav',
+		'/genz/pen.png': '/audio/pen-click.mp3',
+		'/genz/music.webp': '/audio/vinyl-scratch.mp3',
+		'/genz/pixel.png': '/audio/camera-shutter.mp3',
+		'/genz/window.webp': '/audio/windows-xp.mp3',
+		'/genz/folder.webp': '/audio/folder-pop.mp3',
+		'/genz/java.png': '/audio/coffee-slurp.mp3',
+		'/genz/vscode.png': '/audio/glitch.mp3',
+		'/genz/pin_note.webp': '/audio/thumbtack.mp3',
+		'/genz/solar_panel.png': '/audio/electric-hum.mp3',
+		'/genz/thinkpad.png': '/audio/startup-chime.mp3'
+	};
 	let { mode = $bindable() } = $props();
 	let isplaying = $state(false);
-let hoveredItem = $state<string | null>(null);
+	let hoveredItem = $state<string | null>(null);
+	let currentAudio = $state<HTMLAudioElement | null>(null);
 
+	function playSound(src: string) {
+		
+		if (currentAudio) {
+			currentAudio.pause();
+			currentAudio = null;
+		}
+
+		const soundPath = audioFiles[src];
+		if (soundPath) {
+			const audio = new Audio(soundPath);
+			audio.volume = 0.1;
+			currentAudio = audio; 
+
+			audio.play().catch(() => {
+				console.log('Playback blocked');
+			});
+		}
+	}
+
+	function stopSound() {
+		if (currentAudio) {
+			currentAudio.pause();
+			currentAudio.currentTime = 0; 
+			currentAudio = null;
+		}
+	}
 </script>
 
 <div class="relative mb-8 flex h-screen w-screen justify-center overflow-hidden">
@@ -32,12 +75,17 @@ let hoveredItem = $state<string | null>(null);
 		{#if src == '/genz/music.webp' || src == '/genz/music_layer.webp'}
 			<div
 				onmouseenter={() => {
-					isplaying = !isplaying;
+					isplaying = true;
+					playSound(src);
 				}}
 				onmouseleave={() => {
 					isplaying = false;
+					stopSound();
 				}}
-				onclick={() => (isplaying = !isplaying)}
+				onclick={() => {
+					isplaying = true;
+					playSound(src);
+				}}
 				role="presentation"
 				class={cn(
 					mode == 'chaos' &&
@@ -76,6 +124,10 @@ let hoveredItem = $state<string | null>(null);
 			</div>
 		{:else}
 			<img
+				role="presentation"
+				onmouseenter={() => playSound(src)}
+				onmouseleave={() => stopSound()}
+				onclick={() => playSound(src)}
 				{src}
 				alt="Media"
 				class={cn(
@@ -92,7 +144,7 @@ let hoveredItem = $state<string | null>(null);
 					src == '/genz/dream_note.webp' &&
 						mode == 'chaos' &&
 						src == '/genz/dream_note.webp' &&
-						'[@media(min-width:450px)]:w-58 -rotate-36 absolute top-99 -left-8 z-30  h-24 w-38 transition-all delay-200 duration-300 hover:scale-90 hover:-rotate-48  sm:-left-5   [@media(min-width:640px)]:h-32 [@media(min-width:640px)]:w-48 ',
+						'absolute top-99 -left-8 z-30 h-24 w-38  -rotate-36 transition-all delay-200 duration-300 hover:scale-90 hover:-rotate-48 sm:-left-5  [@media(min-width:450px)]:w-58   [@media(min-width:640px)]:h-32 [@media(min-width:640px)]:w-48 ',
 
 					mode == 'cleaned-up' &&
 						src == '/genz/dream_note.webp' &&
@@ -141,19 +193,19 @@ let hoveredItem = $state<string | null>(null);
 					src == '/genz/pixel.png' &&
 						mode == 'chaos' &&
 						src == '/genz/pixel.png' &&
-						' absolute right-12  z-30 h-30 origin-center  rotate-220 cursor-pointer transition-all delay-200 duration-300 hover:z-30  hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1 [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18  [@media(min-width:449px)]:right-38   [@media(min-width:640px)]:translate-y-1 [@media(min-width:640px)]:rotate-60  [@media(min-width:640px)]:hover:z-30   [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-58 [@media(min-width:700px)]:left-32 bottom-99 ',
+						' absolute right-12  bottom-99 z-30 h-30  origin-center rotate-220 cursor-pointer transition-all delay-200 duration-300  hover:z-30 hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1  [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18   [@media(min-width:449px)]:right-38 [@media(min-width:640px)]:translate-y-1  [@media(min-width:640px)]:rotate-60   [@media(min-width:640px)]:hover:z-30 [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-58 [@media(min-width:700px)]:left-32 ',
 
 					mode == 'cleaned-up' &&
 						src == '/genz/pixel.png' &&
-						' absolute right-12  z-30 h-30 origin-center  rotate-220 cursor-pointer transition-all delay-200 duration-300 hover:z-30  hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1 [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18  [@media(min-width:449px)]:right-38   [@media(min-width:640px)]:translate-y-1 [@media(min-width:640px)]:rotate-90  [@media(min-width:640px)]:hover:z-30   [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-58 [@media(min-width:700px)]:left-26 bottom-102 ',
+						' absolute right-12  bottom-102 z-30 h-30  origin-center rotate-220 cursor-pointer transition-all delay-200 duration-300  hover:z-30 hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1  [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18   [@media(min-width:449px)]:right-38 [@media(min-width:640px)]:translate-y-1  [@media(min-width:640px)]:rotate-90   [@media(min-width:640px)]:hover:z-30 [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-58 [@media(min-width:700px)]:left-26 ',
 
 					src == '/genz/pin_note.webp' &&
 						mode == 'chaos' &&
-						'absolute -left-48 z-1 h-96 hover:scale-110 hover:rotate-12 hover:transition-all hover:delay-500 hover:duration-300 transition-all delay-200 duration-300 opacity-0 ',
+						'absolute -left-48 z-1 h-96 opacity-0 transition-all delay-200 duration-300 hover:scale-110 hover:rotate-12 hover:transition-all hover:delay-500 hover:duration-300 ',
 
-						src == '/genz/pin_note.webp' &&
+					src == '/genz/pin_note.webp' &&
 						mode == 'cleaned-up' &&
-						'absolute left-[calc(100vw-7%)] scale-x-[-1] z-1 h-96 hover:scale-110 hover:rotate-12 hover:transition-all hover:delay-500 hover:duration-300 transition-all delay-200 duration-300 ',
+						'absolute left-[calc(100vw-7%)] z-1 h-96 scale-x-[-1] transition-all delay-200 duration-300 hover:scale-110 hover:rotate-12 hover:transition-all hover:delay-500 hover:duration-300 ',
 
 					src == '/genz/solar_panel.png' &&
 						mode == 'chaos' &&
@@ -282,71 +334,111 @@ let hoveredItem = $state<string | null>(null);
 		</div>
 	</div> -->
 
+	<div class="absolute bottom-54 flex h-24 items-center gap-8 px-6">
+		<div
+			class="relative flex flex-col items-center"
+			onmouseenter={() => (hoveredItem = 'chaos')}
+			onmouseleave={() => (hoveredItem = null)}
+			role="presentation"
+		>
+			{#if hoveredItem === 'chaos'}
+				<span
+					class="absolute top-18 rounded-md bg-black px-3 py-1 text-xs whitespace-nowrap text-white shadow-lg"
+				>
+					chaos mode
+				</span>
+			{/if}
+			<div
+				class={cn(
+					'flex h-11 w-11 cursor-pointer items-center justify-center  rounded-md transition-all hover:rotate-8',
+					mode === 'chaos' && 'bg-black/10 ring-2 ring-black/5'
+				)}
+			>
+				<svg
+					width="22"
+					height="29"
+					viewBox="-1 -1 22 29"
+					fill="none"
+					onclick={() => (mode = 'chaos')}
+					role="presentation"
+				>
+					<path
+						d="M2.5 20L3 27H17L17.5 20M17.5 20H1.5L0.5 9.5H10H14.75H18.5M17.5 20H18.5L19.5 9.5H18.5M18.5 9.5L19 4M19 4H1M19 4H20V0.5H0V4H1M1 4L1.5 9"
+						stroke="#69645E"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					></path>
+				</svg>
+			</div>
+		</div>
 
-	<div class="absolute bottom-54 flex items-center gap-8 h-24  px-6 ">
-    
-    <div 
-        class="relative flex flex-col items-center"
-        onmouseenter={() => hoveredItem = 'chaos'}
-        onmouseleave={() => hoveredItem = null}
+		<div
+			class="relative flex flex-col items-center"
+			onmouseenter={() => (hoveredItem = 'cleaned')}
+			onmouseleave={() => (hoveredItem = null)}
+			role="presentation"
+		>
+			{#if hoveredItem === 'cleaned'}
+				<span
+					class="absolute top-18 rounded-md bg-black px-3 py-1 text-xs whitespace-nowrap text-white shadow-lg"
+				>
+					cleaned-up mode
+				</span>
+			{/if}
+			<div
+				class={cn(
+					'flex h-11 w-11 cursor-pointer items-center justify-center rounded-md transition-all hover:rotate-8',
+					mode === 'cleaned-up' && 'bg-black/10 ring-2 ring-black/5'
+				)}
+			>
+				<img
+					src="/genz/broom.png"
+					alt=""
+					class="max-h-8 object-contain"
+					onclick={() => (mode = 'cleaned-up')}
+					role="presentation"
+				/>
+			</div>
+		</div>
 
-	role="presentation"
-    >
-        {#if hoveredItem === 'chaos'}
-            <span class="absolute top-18 whitespace-nowrap bg-black text-white rounded-md px-3 py-1 text-xs shadow-lg">
-                chaos mode
-            </span>
-        {/if}
-        <div class={cn(
-            "flex h-11 w-11 items-center justify-center rounded-md  transition-all hover:rotate-8 cursor-pointer",
-            mode === 'chaos' && "bg-black/10 ring-2 ring-black/5"
-        )}>
-            <svg width="22" height="29" viewBox="-1 -1 22 29" fill="none" onclick={() => mode = 'chaos'} role="presentation">
-                <path d="M2.5 20L3 27H17L17.5 20M17.5 20H1.5L0.5 9.5H10H14.75H18.5M17.5 20H18.5L19.5 9.5H18.5M18.5 9.5L19 4M19 4H1M19 4H20V0.5H0V4H1M1 4L1.5 9" stroke="#69645E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-        </div>
-    </div>
-
-    <div 
-        class="relative flex flex-col items-center"
-        onmouseenter={() => hoveredItem = 'cleaned'}
-        onmouseleave={() => hoveredItem = null}
-	role="presentation"
-    >
-        {#if hoveredItem === 'cleaned'}
-            <span class="absolute top-18 whitespace-nowrap bg-black text-white rounded-md px-3 py-1 text-xs shadow-lg">
-                cleaned-up mode
-            </span>
-        {/if}
-        <div class={cn(
-            "flex h-11 w-11 items-center justify-center rounded-md transition-all hover:rotate-8 cursor-pointer",
-            mode === 'cleaned-up' && "bg-black/10 ring-2 ring-black/5"
-        )}>
-            <img src="/genz/broom.png" alt="" class="max-h-8 object-contain" onclick={() => mode = 'cleaned-up'} role="presentation" />
-        </div>
-    </div>
-
-    <div 
-        class="relative flex flex-col items-center"
-        onmouseenter={() => hoveredItem = 'notebook'}
-        onmouseleave={() => hoveredItem = null}
-	role="presentation"
-    >
-        {#if hoveredItem === 'notebook'}
-            <span class="absolute top-18 whitespace-nowrap bg-black text-white rounded-md px-3 py-1 text-xs shadow-lg">
-                notebook mode
-            </span>
-        {/if}
-        <div class={cn(
-            "flex h-11 w-11 items-center justify-center rounded-md  transition-all hover:rotate-8 cursor-pointer",
-            mode === 'notebook' && "bg-black/10 ring-2 ring-black/5"
-        )}>
-            <svg width="26" height="39" viewBox="-1 -1 26 39" fill="none" onclick={() => mode = 'notebook'} role="presentation">
-                <path d="M13.9737 5L14.5323 4.00494C15.6166 2.07353 18.0668 1.3953 19.9899 2.49423V2.49423C21.9208 3.59763 22.5766 6.06696 21.4475 7.98299L20.8482 9M13.9737 5L12.5702 7.5M13.9737 5L17.4109 7L20.8482 9M20.8482 9L19.375 11.5M19.375 11.5L12.5702 7.5M19.375 11.5L18.1964 13.5L7.12603 32.2861C7.04327 32.4266 6.92742 32.5447 6.78859 32.6301L2.0241 35.5621C1.35783 35.9721 0.5 35.4928 0.5 34.7104V29.2615C0.5 29.0901 0.544083 28.9215 0.628016 28.772L11.4474 9.5L12.5702 7.5M14.8219 11.5L9.41095 21L8.05821 23.375L7.38184 24.5625M4 30.5L5.35274 28.125L6.02911 26.9375" stroke="#69645E" stroke-width="1.5" stroke-linecap="round"></path>
-            </svg>
-        </div>
-    </div>
-</div>
+		<div
+			class="relative flex flex-col items-center"
+			onmouseenter={() => (hoveredItem = 'notebook')}
+			onmouseleave={() => (hoveredItem = null)}
+			role="presentation"
+		>
+			{#if hoveredItem === 'notebook'}
+				<span
+					class="absolute top-18 rounded-md bg-black px-3 py-1 text-xs whitespace-nowrap text-white shadow-lg"
+				>
+					notebook mode
+				</span>
+			{/if}
+			<div
+				class={cn(
+					'flex h-11 w-11 cursor-pointer items-center justify-center  rounded-md transition-all hover:rotate-8',
+					mode === 'notebook' && 'bg-black/10 ring-2 ring-black/5'
+				)}
+			>
+				<svg
+					width="26"
+					height="39"
+					viewBox="-1 -1 26 39"
+					fill="none"
+					onclick={() => (mode = 'notebook')}
+					role="presentation"
+				>
+					<path
+						d="M13.9737 5L14.5323 4.00494C15.6166 2.07353 18.0668 1.3953 19.9899 2.49423V2.49423C21.9208 3.59763 22.5766 6.06696 21.4475 7.98299L20.8482 9M13.9737 5L12.5702 7.5M13.9737 5L17.4109 7L20.8482 9M20.8482 9L19.375 11.5M19.375 11.5L12.5702 7.5M19.375 11.5L18.1964 13.5L7.12603 32.2861C7.04327 32.4266 6.92742 32.5447 6.78859 32.6301L2.0241 35.5621C1.35783 35.9721 0.5 35.4928 0.5 34.7104V29.2615C0.5 29.0901 0.544083 28.9215 0.628016 28.772L11.4474 9.5L12.5702 7.5M14.8219 11.5L9.41095 21L8.05821 23.375L7.38184 24.5625M4 30.5L5.35274 28.125L6.02911 26.9375"
+						stroke="#69645E"
+						stroke-width="1.5"
+						stroke-linecap="round"
+					></path>
+				</svg>
+			</div>
+		</div>
+	</div>
 
 	<div class=" inline-bounce absolute bottom-0">
 		<ChevronsDown class="" strokeWidth={1} size={30} />
