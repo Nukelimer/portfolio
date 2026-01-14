@@ -11,7 +11,9 @@ let { mode } = $props();
 		mode == 'chaos' &&
 			'absolute z-40 ml-2 flex flex-col items-center justify-center font-medium text-black/70 [@media(min-width:365px)]:translate-y-14 [@media(min-width:389px)]:-translate-y-10 transition-all duration-500  right-1/3 xl:right-[calc(36vw-10px)]',
 
-		mode == 'cleaned-up' && 'absolute z-40 ml-2 flex flex-col items-center justify-center font-medium text-black/70 [@media(min-width:365px)]:translate-y-14 [@media(min-width:389px)]:-translate-y-10 right-12 transition-all duration-500 text-end '
+		mode == 'cleaned-up' && 'absolute z-40 ml-2 flex flex-col items-center justify-center font-medium text-black/70 [@media(min-width:365px)]:translate-y-14 [@media(min-width:389px)]:-translate-y-10 right-12 transition-all duration-500 text-end ',
+
+		"select-none"
 	)}
 >
 
