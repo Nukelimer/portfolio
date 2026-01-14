@@ -130,6 +130,7 @@
 		bind:this={audio}
 		src="/audio/wiy.mp3"
 		preload="metadata"
+		muted
 		bind:this={audio}
 		bind:currentTime
 		bind:duration
