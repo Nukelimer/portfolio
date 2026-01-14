@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
+	import MusicPlayer from './MusicPlayer.svelte';
 
 	const mediaSrc = [
 		'/genz/cursor.webp',
@@ -16,13 +17,23 @@
 		'/genz/solar_panel.png',
 		'/genz/thinkpad.png'
 	];
+	let { mode = $bindable() } = $props();
+	let isplaying = $state(false);
 </script>
 
 <div class="relative flex h-screen w-full justify-center">
 	{#each mediaSrc as src}
 		{#if src == '/genz/music.webp' || src == '/genz/music_layer.webp'}
 			<div
-				class="absolute top-5 right-6 h-44 w-38 rounded-2xl border border-black/20 bg-[#F6E8D6]/10 shadow-2xl shadow-[#F6E8D6] hover:scale-105 hover:transition-all hover:delay-300 hover:duration-300 [@media(min-width:439px)]:h-59 [@media(min-width:439px)]:w-44 [@media(min-width:450px)]:h-68 [@media(min-width:450px)]:w-50"
+			onmouseenter={() => {
+					isplaying = !isplaying;
+				}}
+				role="presentation"
+				onmouseleave={() => {
+					isplaying = false;
+				}}
+				onclick={() => (isplaying = !isplaying)}
+				class="absolute top-5 right-6  w-38 rounded-2xl border border-black/20 bg-[#F6E8D6]/10 shadow-2xl shadow-[#F6E8D6] hover:scale-105 hover:transition-all hover:delay-300 hover:duration-300 [@media(min-width:439px)].:h-59 [@media(min-width:439px)]:w-44 [@media(min-width:450px)]:h-fit [@media(min-width:450px)]:w-50"
 			>
 				<div class=" relative flex flex-col items-center justify-center">
 					<img
@@ -40,6 +51,7 @@
 						class={cn('absolute block size-16 animate-spin  rounded-full animation-duration-[5s]')}
 					/>
 				</div>
+				<MusicPlayer {isplaying} {mode} />
 			</div>
 		{:else}
 			<img

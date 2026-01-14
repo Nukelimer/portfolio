@@ -15,6 +15,9 @@ let audioUnlocked = $state(false);
 	const unlock = () => {
 	  audioUnlocked = true;
 	  document.removeEventListener('click', unlock);
+
+	  console.log("okay");
+	  
 	};
 	document.addEventListener('click', unlock, { once: true });
   });
@@ -25,7 +28,7 @@ let audioUnlocked = $state(false);
 >
 	<!-- <div class="fixed top-24 z-50 bg-white">width: {width}</div> -->
 
-	<Media />
+	<Media  />
 	<div
 		class=" absolute z-40 ml-2 flex -rotate-28
 		 flex-col items-center justify-center font-medium text-black/70 [@media(min-width:365px)]:translate-y-14 [@media(min-width:389px)]:-translate-y-10"
