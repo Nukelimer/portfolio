@@ -6,7 +6,18 @@
 	import OtherWorks from "../components/genz/OtherWorks.svelte";
 	import RecentlyMade from "../components/genz/RecentlyMade.svelte";
 
+	
+let audioUnlocked = $state(false);
+	$effect(() => {
+	const unlock = () => {
+	  audioUnlocked = true;
+	  document.removeEventListener('click', unlock);
 
+	  console.log("okay");
+	  
+	};
+	document.addEventListener('click', unlock, { once: true });
+  });
 </script>
 <div class="flex flex-col min-h-screen  items-center justify-cccenter px-1 bg-[#F6E8D6] min-w-screen   overflow-hidden">
 

@@ -17,6 +17,34 @@
 		return (currentTime / duration) * 100;
 	});
 
+	let isUnlocked = $state(false);
+
+  onMount(() => {
+        const unlock = () => {
+            isUnlocked = true;
+            // Clean up
+            ['touchstart', 'wheel', 'mousedown'].forEach(ev => 
+                document.removeEventListener(ev, unlock)
+            );
+        };
+
+        ['touchstart', 'wheel', 'mousedown'].forEach(ev => 
+            document.addEventListener(ev, unlock, { passive: true })
+        );
+
+        // Waveform Animation logic
+        const baseHeight = 10;
+        gsap.ticker.add((time) => {
+            if (bars.length < 5 || !isplaying) return;
+            bars.forEach((bar, i) => {
+                if (!bar) return;
+                const wave = Math.sin(time * 4 + i * 0.6);
+                const height = baseHeight + wave * 4;
+                gsap.set(bar, { height, y: -(height - baseHeight) / 2 });
+            });
+        });
+    });
+
 	$effect(() => {
 		if (!audio) return;
 		audio.volume = 0.01;
@@ -67,7 +95,7 @@
 	});
 </script>
 
-<div class= {cn(mode == "cleaned-up"? "w-1/3 rounded-r-xl justify-evenly flex flex-col bg-white/5 p-4 shadow-sm backdrop-blur-md": "w-full rounded-xl bg-white/5 p-4 shadow-sm backdrop-blur-md")}>
+<div class= {cn(mode == "cleaned-up"? "w-1/2 rounded-r-xl justify-evenly flex flex-col bg-white/5 p-4 shadow-sm backdrop-blur-md": "w-full rounded-xl bg-white/5 p-4 shadow-sm backdrop-blur-md")}>
 	<div class="mb-2 h-6">
 		<div class="flex justify-center gap-1">
 			{#each Array(5) as _, i}

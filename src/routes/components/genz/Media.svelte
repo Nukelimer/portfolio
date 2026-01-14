@@ -19,6 +19,19 @@
 	];
 	let { mode = $bindable() } = $props();
 	let isplaying = $state(false);
+
+		
+let audioUnlocked = $state(false);
+	$effect(() => {
+	const unlock = () => {
+	  audioUnlocked = true;
+	  document.removeEventListener('click', unlock);
+
+	  console.log("okay");
+	  
+	};
+	document.addEventListener('click', unlock, { once: true });
+  });
 </script>
 
 <div class="relative flex h-screen w-full justify-center">
@@ -33,7 +46,7 @@
 					isplaying = false;
 				}}
 				onclick={() => (isplaying = !isplaying)}
-				class="absolute top-5 right-6  w-38 rounded-2xl border border-black/20 bg-[#F6E8D6]/10 shadow-2xl shadow-[#F6E8D6] hover:scale-105 hover:transition-all hover:delay-300 hover:duration-300 [@media(min-width:439px)].:h-59 [@media(min-width:439px)]:w-44 [@media(min-width:450px)]:h-fit [@media(min-width:450px)]:w-50"
+				class="absolute top-5 right-6  w-45 rounded-2xl border border-black/20 bg-[#F6E8D6]/10 shadow-2xl shadow-[#F6E8D6] hover:scale-105 hover:transition-all hover:delay-300 hover:duration-300 [@media(min-width:439px)].:h-59 [@media(min-width:439px)]:w-44 [@media(min-width:450px)]:h-fit [@media(min-width:450px)]:w-50"
 			>
 				<div class=" relative flex flex-col items-center justify-center">
 					<img

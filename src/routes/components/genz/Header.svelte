@@ -9,18 +9,7 @@
 	let mode = $state('cleaned-up');
 
 
-	
-let audioUnlocked = $state(false);
-	$effect(() => {
-	const unlock = () => {
-	  audioUnlocked = true;
-	  document.removeEventListener('click', unlock);
 
-	  console.log("okay");
-	  
-	};
-	document.addEventListener('click', unlock, { once: true });
-  });
 </script>
 
 <div
