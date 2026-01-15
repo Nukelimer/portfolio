@@ -185,7 +185,7 @@
 				></span>
 			</span>
 
-			<span class=" rounded-full bg-black px-8 py-2.5 text-center font-medium text-white">You</span>
+			<span class=" rounded-full bg-black px-8 py-2.5 text-center font-medium text-white">You {y}</span>
 		</div>
 	</div>
 	<h4
