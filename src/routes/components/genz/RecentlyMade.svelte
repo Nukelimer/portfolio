@@ -143,7 +143,7 @@
 		if (y < 60) y -= 60;
 		if (x < 15) x -= 160;
 
-		if (y > 1004) y += 610;
+		if (y > 900) y += 210;
 	}
 
 	onMount(() => {
@@ -185,7 +185,7 @@
 				></span>
 			</span>
 
-			<span class=" rounded-full bg-black px-8 py-2.5 text-center font-medium text-white">You {y}</span>
+			<span class=" rounded-full bg-black px-8 py-2.5 text-center font-medium text-white">You </span>
 		</div>
 	</div>
 	<h4
