@@ -2,6 +2,24 @@
 	import { cn } from '$lib/utils';
 	import { ChevronsDown } from 'lucide-svelte';
 	import MusicPlayer from './MusicPlayer.svelte';
+ import { onMount } from 'svelte';
+
+  let width = $state(0);
+  let height = $state(0);
+
+  onMount(() => {
+    const update = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+    };
+
+    update();
+    window.addEventListener('resize', update);
+
+    return () => window.removeEventListener('resize', update);
+  });
+
+console.log(width, height);
 
 	const mediaSrc = [
 		'/genz/cursor.webp',
@@ -71,6 +89,8 @@
 </script>
 
 <div class="relative mb-8 flex h-screen w-screen justify-center overflow-hidden">
+
+	<p>{width} × {height}</p>
 	{#each mediaSrc as src}
 		{#if src == '/genz/music.webp' || src == '/genz/music_layer.webp'}
 			<div
@@ -193,11 +213,11 @@
 					src == '/genz/pixel.png' &&
 						mode == 'chaos' &&
 						src == '/genz/pixel.png' &&
-						' absolute right-12  bottom-99 z-30 h-30  origin-center rotate-220 cursor-pointer transition-all delay-200 duration-300  hover:z-30 hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1  [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18   [@media(min-width:449px)]:right-38 [@media(min-width:640px)]:translate-y-1  [@media(min-width:640px)]:rotate-60   [@media(min-width:640px)]:hover:z-30 [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-58 [@media(min-width:700px)]:left-32 ',
+						' absolute right-12  bottom-73 [@media(min-height:990px)]:bottom-103  z-30 h-30  origin-center rotate-220 cursor-pointer transition-all delay-200 duration-300  hover:z-30 hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1  [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18   [@media(min-width:449px)]:right-38 [@media(min-width:640px)]:translate-y-1  [@media(min-width:640px)]:rotate-60   [@media(min-width:640px)]:hover:z-30 [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-58 [@media(min-width:700px)]:left-32 ',
 
 					mode == 'cleaned-up' &&
 						src == '/genz/pixel.png' &&
-						' absolute right-12  bottom-102 z-30 h-30  origin-center rotate-220 cursor-pointer transition-all delay-200 duration-300  hover:z-30 hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1  [@media(min-width:399px)]:h-40  [@media(min-width:400px)]:translate-y-18   [@media(min-width:449px)]:right-38 [@media(min-width:640px)]:translate-y-1  [@media(min-width:640px)]:rotate-90   [@media(min-width:640px)]:hover:z-30 [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-58 [@media(min-width:700px)]:left-26 ',
+						' absolute right-12  bottom-1/3 [@media(min-width:1280px)]:bottom-1/5  z-30 h-30  origin-center rotate-220 cursor-pointer transition-all delay-200 duration-300  hover:z-30 hover:-translate-y-4 hover:scale-110 hover:rotate-230 sm:right-30 [@media(min-width:349px)]:hover:-translate-y-1  [@media(min-width:399px)]:h-40  [@media(min-width:640px)]:rotate-90   [@media(min-width:640px)]:hover:z-30 [@media(min-width:640px)]:hover:-translate-y-1 [@media(min-width:640px)]:hover:rotate-58 [@media(min-width:700px)]:left-26 2xl:top-120',
 
 					src == '/genz/pin_note.webp' &&
 						mode == 'chaos' &&
@@ -210,12 +230,17 @@
 					src == '/genz/solar_panel.png' &&
 						mode == 'chaos' &&
 						src == '/genz/solar_panel.png' &&
-						'absolute   right-12 h-64 w-40  translate-y-12   hover:scale-105 hover:rotate-80  hover:transition-all hover:delay-500 hover:duration-500 [@media(min-width:365px)]:-rotate-6  [@media(min-width:399px)]:h-74  [@media(min-width:399px)]:w-54 [@media(min-width:450px)]:bottom-[44%] [@media(min-width:605px)]:rotate-90',
+						'absolute   right-12 h-64 w-40  translate-y-12   hover:scale-105 hover:rotate-80  hover:transition-all hover:delay-500 hover:duration-500 [@media(min-width:365px)]:-rotate-6  [@media(min-width:399px)]:h-74  [@media(min-width:399px)]:w-54 [@media(min-width:450px)]:bottom-[10%] [@media(min-width:605px)]:rotate-90 ',
 					mode == 'cleaned-up' &&
 						src == '/genz/solar_panel.png' &&
-						'absolute   right-[calc(calc(100%-590px))] hidden h-64  w-40  translate-y-12 hover:scale-105  hover:rotate-80 hover:transition-all hover:delay-500 hover:duration-500  2xl:flex  [@media(min-width:365px)]:-rotate-6 [@media(min-width:399px)]:h-64 [@media(min-width:399px)]:w-70 [@media(min-width:450px)]:bottom-[76%]  [@media(min-width:605px)]:rotate-90',
-					src == '/genz/thinkpad.png' &&
-						'absolute  right-46  hidden  w-36  hover:origin-center hover:scale-95 hover:transition-all hover:delay-300  hover:duration-300  2xl:flex [@media(min-width:439px)]:right-50  [@media(min-width:450px)]:h-54  [@media(min-width:450px)]:w-58 [@media(min-width:450px)]:object-fill [@media(min-width:600px)]:top-12  [@media(min-width:600px)]:right-54 [@media(min-width:640px)]:right-58 [@media(min-width:640px)]:w-44 [@media(min-width:720px)]:right-84  ',
+						'absolute   right-[calc(calc(100%-650px))] hidden h-64  w-40  translate-y-12 hover:scale-105  hover:rotate-80 hover:transition-all hover:delay-500 hover:duration-500  2xl:flex  [@media(min-width:365px)]:-rotate-6 [@media(min-width:399px)]:h-94 [@media(min-width:399px)]:w-70 [@media(min-width:450px)]:bottom-[66%]  [@media(min-width:605px)]:rotate-90 2xl:-top-13   ',
+
+
+
+					src == '/genz/thinkpad.png' && mode == 'chaos' &&
+						'absolute  right-46  hidden  w-36  hover:origin-center hover:scale-95 hover:transition-all hover:delay-300  hover:duration-300  2xl:flex [@media(min-width:439px)]:right-50  [@media(min-width:450px)]:h-74  [@media(min-width:450px)]:w-58 [@media(min-width:450px)]:object-fill [@media(min-width:600px)]:top-1  [@media(min-width:600px)]:right-54 [@media(min-width:640px)]:right-58 [@media(min-width:640px)]:w-64 [@media(min-width:720px)]:right-84  ',
+						src == '/genz/thinkpad.png' && mode == 'cleaned-up' &&
+						'absolute  right-46  hidden  w-36  hover:origin-center hover:scale-95 hover:transition-all hover:delay-300  hover:duration-300  2xl:flex [@media(min-width:439px)]:right-50  [@media(min-width:450px)]:h-74  [@media(min-width:450px)]:w-58 [@media(min-width:450px)]:object-fill [@media(min-width:600px)]:top-6  [@media(min-width:600px)]:right-54 [@media(min-width:640px)]:right-58 [@media(min-width:640px)]:w-64 [@media(min-width:720px)]:right-84  ',
 
 					src == '/genz/window.webp' &&
 						mode == 'chaos' &&
