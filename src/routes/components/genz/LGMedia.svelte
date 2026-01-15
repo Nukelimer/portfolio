@@ -90,7 +90,7 @@ console.log(width, height);
 
 <div class="relative mb-8 flex h-screen w-screen justify-center overflow-hidden">
 
-	<p>{width} × {height}</p>
+	
 	{#each mediaSrc as src}
 		{#if src == '/genz/music.webp' || src == '/genz/music_layer.webp'}
 			<div

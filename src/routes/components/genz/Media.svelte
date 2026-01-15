@@ -102,23 +102,10 @@
 	});
 
 
-	onMount(() => {
-  const setVH = () => {
-    document.documentElement.style.setProperty(
-      '--vh',
-      `${window.innerHeight * 0.01}px`
-    );
-  };
-
-  setVH();
-  window.addEventListener('resize', setVH);
-
-  return () => window.removeEventListener('resize', setVH);
-});
 
 </script>
 
-<div class="relative flex h-[110vh]  w-screen justify-center border-red-400 border-4">
+<div class="relative flex h-[110vh]  w-screen justify-center ">
 	{#each mediaSrc as src}
 		{#if src == '/genz/music.webp' || src == '/genz/music_layer.webp'}
 			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
