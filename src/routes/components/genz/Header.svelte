@@ -46,5 +46,26 @@
 	.name_font {
 		font-family: 'Remi', sans-serif;
 	}
+
+	
+	.inline-bounce {
+		animation: inlineBounce 1.2s infinite;
+	}
+
+	@keyframes inlineBounce {
+		0% {
+			transform: translateY(15);
+			animation-timing-function: step-end;
+		}
+
+		50% {
+			transform: translateY(-25px);
+			animation-timing-function: ease-in-out;
+		}
+
+		100% {
+			transform: translateY(15);
+		}
+	}
 </style>
 
